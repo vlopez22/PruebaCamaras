@@ -18,15 +18,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QCameraViewfinder *mCameraViewfinder = new QCameraViewfinder(this);
     mLayout1 = new QVBoxLayout;
     mCamera = new QCamera(QCameraInfo(cameras[0]));
-    mCamera2 = new QCamera(QCameraInfo(cameras[1]));
+    //mCamera2 = new QCamera(QCameraInfo(cameras[1]));
     mCamera->setViewfinder(mCameraViewfinder);
     mLayout1->setMargin(0);
     mLayout1->addWidget(mCameraViewfinder);
     ui->widget->setLayout(mLayout1);
     mCamera->start();
-    double i=cameras[1].position();
-    ui->lineEdit->setText(QString::number(i));
-
+    double i=cameras[0].position();
+    ui->lineEdit->setText("Hola Buenos dias");
 
 }
 

@@ -1,0 +1,333 @@
+[1mdiff --git a/mainwindow.cpp b/mainwindow.cpp[m
+[1mindex 39d31ea..14ee6cb 100644[m
+[1m--- a/mainwindow.cpp[m
+[1m+++ b/mainwindow.cpp[m
+[36m@@ -18,15 +18,14 @@[m [mMainWindow::MainWindow(QWidget *parent) :[m
+     QCameraViewfinder *mCameraViewfinder = new QCameraViewfinder(this);[m
+     mLayout1 = new QVBoxLayout;[m
+     mCamera = new QCamera(QCameraInfo(cameras[0]));[m
+[31m-    mCamera2 = new QCamera(QCameraInfo(cameras[1]));[m
+[32m+[m[32m    //mCamera2 = new QCamera(QCameraInfo(cameras[1]));[m
+     mCamera->setViewfinder(mCameraViewfinder);[m
+     mLayout1->setMargin(0);[m
+     mLayout1->addWidget(mCameraViewfinder);[m
+     ui->widget->setLayout(mLayout1);[m
+     mCamera->start();[m
+[31m-    double i=cameras[1].position();[m
+[31m-    ui->lineEdit->setText(QString::number(i));[m
+[31m-[m
+[32m+[m[32m    double i=cameras[0].position();[m
+[32m+[m[32m    ui->lineEdit->setText("Hola Buenos dias");[m
+ [m
+ }[m
+ [m
+[1mdiff --git a/pruebaCamaras.pro.user b/pruebaCamaras.pro.user[m
+[1mindex a8932d2..ed097af 100644[m
+[1m--- a/pruebaCamaras.pro.user[m
+[1m+++ b/pruebaCamaras.pro.user[m
+[36m@@ -1,6 +1,6 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <!DOCTYPE QtCreatorProject>[m
+[31m-<!-- Written by QtCreator 4.0.3, 2020-02-24T21:47:14. -->[m
+[32m+[m[32m<!-- Written by QtCreator 4.11.0, 2020-03-10T09:55:42. -->[m
+ <qtcreator>[m
+  <data>[m
+   <variable>EnvironmentId</variable>[m
+[36m@@ -54,24 +54,27 @@[m
+  </data>[m
+  <data>[m
+   <variable>ProjectExplorer.Project.PluginSettings</variable>[m
+[31m-  <valuemap type="QVariantMap"/>[m
+[32m+[m[32m  <valuemap type="QVariantMap">[m
+[32m+[m[32m   <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">[m
+[32m+[m[32m    <value type="QString">-fno-delayed-template-parsing</value>[m
+[32m+[m[32m   </valuelist>[m
+[32m+[m[32m   <value type="bool" key="ClangCodeModel.UseGlobalConfig">true</value>[m
+[32m+[m[32m  </valuemap>[m
+  </data>[m
+  <data>[m
+   <variable>ProjectExplorer.Project.Target.0</variable>[m
+   <valuemap type="QVariantMap">[m
+[31m-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.6.3 MinGW 32bit</value>[m
+[31m-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.6.3 MinGW 32bit</value>[m
+[31m-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.563.win32_mingw49_kit</value>[m
+[32m+[m[32m   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Qt 5.12.4 (mingw73_32)</value>[m
+[32m+[m[32m   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Qt 5.12.4 (mingw73_32)</value>[m
+[32m+[m[32m   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{1a91fb49-2dbd-4ac3-8f86-8f911e12bef9}</value>[m
+    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>[m
+    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>[m
+    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">[m
+[31m-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/Error in &quot; Util.asciify(&quot;build-pruebaCamaras-Desktop_Qt_5_6_3_MinGW_32bit-Debug&quot;)&quot;: TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0x29e2df8) is not a function</value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/pruebaCamaras/build-pruebaCamaras-Qt_5_12_4_mingw73_32-Debug</value>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">qmake</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">true</value>[m
+       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>[m
+[36m@@ -81,168 +84,167 @@[m
+      </valuemap>[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">false</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments"></value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">2</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>[m
+     </valuemap>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">true</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments">clean</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>[m
+     </valuemap>[m
+     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>[m
+     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>[m
+     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Debug</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>[m
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>[m
+     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>[m
+[31m-    <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>[m
+    </valuemap>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">[m
+[31m-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/Error in &quot; Util.asciify(&quot;build-pruebaCamaras-Desktop_Qt_5_6_3_MinGW_32bit-Release&quot;)&quot;: TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0x29e2df8) is not a function</value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/pruebaCamaras/build-pruebaCamaras-Qt_5_12_4_mingw73_32-Release</value>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">qmake</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">false</value>[m
+       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>[m
+[31m-      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>[m
+[32m+[m[32m      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>[m
+      </valuemap>[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">false</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments"></value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">2</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>[m
+     </valuemap>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">true</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments">clean</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>[m
+     </valuemap>[m
+     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>[m
+     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>[m
+     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>[m
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>[m
+     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>[m
+[31m-    <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>[m
+    </valuemap>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">[m
+[31m-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/Error in &quot; Util.asciify(&quot;build-pruebaCamaras-Desktop_Qt_5_6_3_MinGW_32bit-Profile&quot;)&quot;: TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0x29e2df8) is not a function</value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Vicente/Documents/pruebaCamaras/build-pruebaCamaras-Qt_5_12_4_mingw73_32-Profile</value>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">qmake</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary">true</value>[m
+       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>[m
+       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">true</value>[m
+[31m-      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>[m
+[32m+[m[32m      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>[m
+      </valuemap>[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">false</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments"></value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">2</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>[m
+     </valuemap>[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.1">[m
+      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">[m
+       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>[m
+[31m-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.MakeStep</value>[m
+[31m-      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.AutomaticallyAddedMakeArguments"/>[m
+[32m+[m[32m      <valuelist type="QVariantList" key="Qt4ProjectManager.MakeStep.BuildTargets"/>[m
+       <value type="bool" key="Qt4ProjectManager.MakeStep.Clean">true</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeArguments">clean</value>[m
+       <value type="QString" key="Qt4ProjectManager.MakeStep.MakeCommand"></value>[m
+[32m+[m[32m      <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>[m
+      </valuemap>[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Clean</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Clean</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Clean</value>[m
+     </valuemap>[m
+     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>[m
+     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>[m
+     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Profile</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Profile</value>[m
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>[m
+     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>[m
+[31m-    <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>[m
+    </valuemap>[m
+    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">3</value>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">[m
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">[m
+      <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Deploy</value>[m
+[31m-     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[32m+[m[32m     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Deploy</value>[m
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Deploy</value>[m
+     </valuemap>[m
+     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">1</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Deploy locally</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.DefaultDeployConfiguration</value>[m
+    </valuemap>[m
+    <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>[m
+    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">[m
+[32m+[m[32m    <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>[m
+[32m+[m[32m    <valuelist type="QVariantList" key="Analyzer.Perf.Events">[m
+[32m+[m[32m     <value type="QString">cpu-cycles</value>[m
+[32m+[m[32m    </valuelist>[m
+[32m+[m[32m    <valuelist type="QVariantList" key="Analyzer.Perf.ExtraArguments"/>[m
+[32m+[m[32m    <value type="int" key="Analyzer.Perf.Frequency">250</value>[m
+[32m+[m[32m    <valuelist type="QVariantList" key="Analyzer.Perf.RecordArguments">[m
+[32m+[m[32m     <value type="QString">-e</value>[m
+[32m+[m[32m     <value type="QString">cpu-cycles</value>[m
+[32m+[m[32m     <value type="QString">--call-graph</value>[m
+[32m+[m[32m     <value type="QString">dwarf,4096</value>[m
+[32m+[m[32m     <value type="QString">-F</value>[m
+[32m+[m[32m     <value type="QString">250</value>[m
+[32m+[m[32m    </valuelist>[m
+[32m+[m[32m    <value type="QString" key="Analyzer.Perf.SampleMode">-F</value>[m
+[32m+[m[32m    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>[m
+[32m+[m[32m    <value type="int" key="Analyzer.Perf.StackSize">4096</value>[m
+     <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>[m
+     <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>[m
+     <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>[m
+[36m@@ -257,6 +259,7 @@[m
+     <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>[m
+     <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>[m
+     <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>[m
+[32m+[m[32m    <value type="QString" key="Analyzer.Valgrind.KCachegrindExecutable">kcachegrind</value>[m
+     <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>[m
+     <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>[m
+     <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>[m
+[36m@@ -284,21 +287,19 @@[m
+     </valuelist>[m
+     <value type="int" key="PE.EnvironmentAspect.Base">2</value>[m
+     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">pruebaCamaras</value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>[m
+[31m-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Vicente/Documents/pruebaCamaras/pruebaCamaras.pro</value>[m
+[31m-    <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>[m
+[31m-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>[m
+[31m-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">pruebaCamaras.pro</value>[m
+[31m-    <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>[m
+[31m-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>[m
+[31m-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Vicente/Documents/Error in &quot; Util.asciify(&quot;build-pruebaCamaras-Desktop_Qt_5_6_3_MinGW_32bit-Debug&quot;)&quot;: TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0x29e2df8) is not a function</value>[m
+[31m-    <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Executable"></value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.CustomExecutableRunConfiguration</value>[m
+[32m+[m[32m    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey"></value>[m
+[32m+[m[32m    <value type="QString" key="RunConfiguration.Arguments"></value>[m
+[32m+[m[32m    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>[m
+[32m+[m[32m    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>[m
+     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>[m
+     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>[m
+     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>[m
+     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>[m
+     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>[m
+[32m+[m[32m    <value type="QString" key="RunConfiguration.WorkingDirectory"></value>[m
+[32m+[m[32m    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>[m
+    </valuemap>[m
+    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>[m
+   </valuemap>[m
+[36m@@ -309,10 +310,10 @@[m
+  </data>[m
+  <data>[m
+   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>[m
+[31m-  <value type="int">18</value>[m
+[32m+[m[32m  <value type="int">22</value>[m
+  </data>[m
+  <data>[m
+   <variable>Version</variable>[m
+[31m-  <value type="int">18</value>[m
+[32m+[m[32m  <value type="int">22</value>[m
+  </data>[m
+ </qtcreator>[m
