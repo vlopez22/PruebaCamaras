@@ -25,8 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget->setLayout(mLayout1);
     mCamera->start();
     double i=cameras[0].position();
-    ui->lineEdit->setText("Hola Buenos dias");
-
+    ui->lineEdit->setText("Hola Buenos dias que taldbffbvc");
+    qInfo("que pasa ");
 }
 
 MainWindow::~MainWindow()
